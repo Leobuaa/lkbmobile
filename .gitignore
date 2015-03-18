@@ -1,0 +1,5 @@
+## Directory-based project format:
+.idea/
+
+## ignore config file
+app/core/config.php
