@@ -13,9 +13,6 @@ class Article extends \core\model {
         parent::__construct();
     }
 
-    public function test() {
-        return $this->_db->select("SELECT * FROM dede_archives LIMIT 0, 1");
-    }
 
     /**
      * 返回显示在首页上的八个标签
@@ -29,9 +26,41 @@ class Article extends \core\model {
         return $tags;
     }
 
-    public function getArticles() {
-        return $this->_db->select("SELECT id,title,pubdate,litpic,description,writer FROM
-        dede_archives WHERE channel=1 AND arcrank = 0 AND typeid IN (SELECT id FROM dede_arctype
-        WHERE topid=1) ORDER BY id DESC LIMIT 0, 10");
+    /**
+     * 返回特定类型的文章列表, $type为1表示返回带有滚动属性的普通文章, $type为2表示返回带有手机属性的普通文章
+     *
+     * @param $type
+     * @return array
+     */
+    public function getArticles($type) {
+        if ($type == 1)
+            return $this->_db->select("SELECT id, title, pubdate, litpic, description, writer FROM dede_archives
+                                       WHERE flag LIKE '%s%'AND typeid in (SELECT id FROM dede_arctype WHERE topid
+                                       = '1' or topid = '2' or topid = '233') ORDER BY id DESC LIMIT 0, 10");
+        else
+            return $this->_db->select("SELECT id, title, pubdate, litpic, description, writer FROM dede_archives
+                                       WHERE flag LIKE '%w%'AND typeid in (SELECT id FROM dede_arctype WHERE topid
+                                       = '1' or topid = '2' or topid = '233') ORDER BY id DESC LIMIT 0, 5");
+    }
+
+
+    /**
+     * 搜索特定的文章
+     *
+     * @param $keywords
+     * @param $page
+     * @return array
+     */
+    public function search($keywords, $page) {
+        $keywordArray = explode(' ', $keywords);
+        $likeStatementArray = array();
+        foreach($keywordArray as $keyword) {
+            $likeStatementArray[] = " keywords LIKE '%$keyword%'";
+        }
+        $likeStatement = implode(" OR", $likeStatementArray);
+        $orderStatement = " ORDER BY id DESC";
+        $limitStatement = " LIMIT ".(10*($page - 1)).", 10";
+        return $this->_db->select("SELECT id, title, pubdate, litpic, description, writer FROM dede_archives
+                                          WHERE ".$likeStatement.$orderStatement.$limitStatement);
     }
 }
