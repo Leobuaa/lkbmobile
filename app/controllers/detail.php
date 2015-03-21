@@ -7,14 +7,32 @@
  */
 namespace controllers;
 use core\view;
+use models\Article;
 
 class Detail extends \core\controller {
 
+    private $model;
+    private $id;
+
     public function __construct() {
         parent::__construct();
+
+        $this->model = new Article();
+        $this->id = 1354;
     }
 
-    public function index() {
+    public function article() {
+        if (isset($_GET['id']))
+            $this->id = $_GET['id'];
 
+        $data = [
+            'title' => 'Test Page',
+            'message' => 'Hello, this is a test page!',
+            'article' => $this->model->getDetailArticle($this->id)
+        ];
+
+        View::rendertemplate('header', $data);
+        View::render('detail/article', $data);
+        View::rendertemplate('footer', $data);
     }
 }

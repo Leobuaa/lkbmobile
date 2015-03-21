@@ -11,35 +11,24 @@ use models\Article;
 
 class Home extends \core\controller {
 
+    private $model;
+
     public function __construct() {
         parent::__construct();
+        $this->model = new Article();
     }
 
     public function index() {
         $data = [
             'title' => 'Test Page',
-            'test' => $this->test(),
-            'message' => 'Hello, this is a test page!'
+            'message' => 'Hello, this is a test page!',
+            'tags' => $this->model->getTags(),
+            'scrollList' => $this->model->getArticles(1),
+            'wapList' => $this->model->getArticles(2)
         ];
 
-        // 测试页面, 返回结果是一维数组时使用testArray, 结果是二维数组时候使用testArray2
         View::rendertemplate('header', $data);
-        View::render('home/testArray2', $data);
+        View::render('home/index', $data);
         View::rendertemplate('footer', $data);
-    }
-
-    /**
-     * 测试函数, 用于测试接口
-     * @return array
-     */
-    public function test() {
-        $model = new Article();
-        $keywords = "食欲不振";
-        $page = 1;
-        if (isset($_GET['keywords']))
-            $keywords = $_GET['keywords'];
-        if (isset($_GET['page']))
-            $page = $_GET['page'];
-        return $model->search($keywords, $page);
     }
 }

@@ -34,11 +34,13 @@ class Article extends \core\model {
      */
     public function getArticles($type) {
         if ($type == 1)
-            return $this->_db->select("SELECT id, title, pubdate, litpic, description, writer FROM dede_archives
+            return $this->_db->select("SELECT id, title, pubdate, litpic, description, writer
+                                       FROM dede_archives
                                        WHERE flag LIKE '%s%'AND typeid in (SELECT id FROM dede_arctype WHERE topid
                                        = '1' or topid = '2' or topid = '233') ORDER BY id DESC LIMIT 0, 10");
         else
-            return $this->_db->select("SELECT id, title, pubdate, litpic, description, writer FROM dede_archives
+            return $this->_db->select("SELECT id, title, pubdate, litpic, description, writer
+                                       FROM dede_archives
                                        WHERE flag LIKE '%w%'AND typeid in (SELECT id FROM dede_arctype WHERE topid
                                        = '1' or topid = '2' or topid = '233') ORDER BY id DESC LIMIT 0, 5");
     }
@@ -60,7 +62,23 @@ class Article extends \core\model {
         $likeStatement = implode(" OR", $likeStatementArray);
         $orderStatement = " ORDER BY id DESC";
         $limitStatement = " LIMIT ".(10*($page - 1)).", 10";
-        return $this->_db->select("SELECT id, title, pubdate, litpic, description, writer FROM dede_archives
-                                          WHERE ".$likeStatement.$orderStatement.$limitStatement);
+        return $this->_db->select("SELECT id, title, pubdate, litpic, description, writer
+                                   FROM dede_archives
+                                   WHERE ".$likeStatement.$orderStatement.$limitStatement);
+    }
+
+    /**
+     * 通过id获取特定文章的详细内容
+     *
+     * @param $id
+     * @return array
+     */
+    public function getDetailArticle($id) {
+        return $this->_db->select("SELECT arc.id, tp.typename, tp.ishidden, arc.typeid, arc.title, arc.arcrank,
+                                  arc.pubdate, arc.writer, arc.click, addon.body, tp.topid, arc.mid, arc.keywords
+                                  FROM dede_archives arc
+                                  LEFT JOIN dede_arctype tp ON tp.id=arc.typeid
+                                  LEFT JOIN dede_addonarticle addon ON addon.aid=arc.id
+                                  WHERE arc.id='$id'");
     }
 }
