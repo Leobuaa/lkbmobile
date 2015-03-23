@@ -28,7 +28,8 @@ class Detail extends \core\controller {
         $data = [
             'title' => 'Test Page',
             'message' => 'Hello, this is a test page!',
-            'article' => $this->model->getDetailArticle($this->id)
+            'article' => $this->model->getDetailArticle($this->id),
+            'relatedArticles' => $this->model->getRelatedArticle($this->id),
         ];
 
         View::rendertemplate('header', $data);

@@ -81,4 +81,24 @@ class Article extends \core\model {
                                   LEFT JOIN dede_addonarticle addon ON addon.aid=arc.id
                                   WHERE arc.id='$id'");
     }
+
+    /**
+     * 通过id获取相关文章的列表
+     *
+     * @param $id
+     * @return array
+     */
+    public function getRelatedArticle($id) {
+        $article = $this->getDetailArticle($id);
+        $keywords = $article[0]->keywords;
+        $keywordArray = explode(',', $keywords);
+        $likeStatementArray = array();
+        foreach($keywordArray as $keyword) {
+            $likeStatementArray[] = " CONCAT(keywords, ' ', title) LIKE '%$keyword%'";
+        }
+        $likeStatement = implode(" OR", $likeStatementArray);
+        $orderStatement = " ORDER BY pubdate LIMIT 0, 3";
+        return $this->_db->select("SELECT id, keywords, title
+                                  FROM dede_archives WHERE id<>$id AND ".$likeStatement.$orderStatement);
+    }
 }

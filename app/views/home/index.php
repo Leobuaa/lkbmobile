@@ -1,3 +1,15 @@
+<style type="text/css">
+    .swiper-container {
+        width: 300px;
+        height: 225px;
+    }
+
+    img {
+        width: 300px !important;
+        height: 225px !important;
+    }
+</style>
+
 <div class="page-header">
     <h1><?php echo $data['title'] ?></h1>
 </div>
@@ -5,13 +17,19 @@
 <p><?php echo $data['message'] ?></p>
 
 <h4>滚动列表文章标题</h4>
-<ul>
-    <?php
+
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <?php
         foreach ($data['scrollList'] as $article) {
-            echo "<li>".$article->title."</li>" ;
+            echo "<div class='swiper-slide'>
+                    <a href='/article?id=$article->id'><img src='$article->litpic' /></a>
+                  </div>" ;
         }
-    ?>
-</ul>
+        ?>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
 <br>
 
 <h4>标签列表</h4>
