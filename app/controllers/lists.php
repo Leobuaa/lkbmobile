@@ -20,15 +20,15 @@ class Lists extends \core\controller {
 
         $this->model = new Article();
         $this->page = 1;
-        $this->keywords = "食欲不振";
+        $this->keywords = "痛风";
     }
 
     public function search() {
         $this->getParameters();
 
         $data = [
-            'title' => 'Test Page',
-            'message' => 'Hello, this is a test page!',
+            'page' => $this->page,
+            'keywords' => $this->keywords,
             'articleList' => $this->model->search($this->keywords, $this->page)
         ];
 
