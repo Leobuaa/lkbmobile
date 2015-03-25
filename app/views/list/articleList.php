@@ -18,7 +18,7 @@
     }
 
     p {
-        font-size: 1em;
+        font-size: 1.3em;
         color: #000000;
     }
 </style>
@@ -74,7 +74,7 @@
 
     foreach ($data['articleList'] as $article) {
         $description = $article->description;
-        //$description = substr($description, 0, 180);
+        $description = mb_substr($description, 0, 30, 'utf-8');
         echo "<div class='row' style='border-bottom: 1px solid #e2f5e3; margin:0 1px'>
                 <div class='col-xs-5' style='margin: 10px 0; padding: 0'>
                     <a href='/article?id=$article->id'>
@@ -85,9 +85,9 @@
                     <div class='row'>
                         <div class='col-xs-12'>
                             <a href='/article?id=$article->id'>
-                                <h5>
+                                <h4>
                                     $article->title
-                                </h5>
+                                </h4>
                             </a>
                         </div>
                     </div>
