@@ -13,8 +13,13 @@
         margin: 0 -30px;
     }
 
-    #healthyHeader {
+    #healthy-header {
         background-color: #e2f5e3;
+        color: #008000;
+    }
+
+    #healthy-header h5 {
+        text-align: right;
     }
 
     #tag {
@@ -76,18 +81,33 @@
         background-color: #c37cd0;
     }
 
+    .logo {
+        padding-top: 2px;
+    }
+
+    .scroll-title {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        z-index: 10;
+        color: #ffffff;
+    }
+
+    .header-title {
+        border-left: solid green;
+    }
 
 </style>
 
 <div id="header" class="row">
-    <div class="col-xs-4" style="padding-top: 2px">
+    <div class="col-xs-4 logo">
         <a href="/home">
             <img id="logo" src="/images/logo-2.png" width="90px" height="24px" alt="logo" />
         </a>
     </div>
     <div id="search" class="col-xs-8">
         <div class="input-group">
-            <input id="searchText" type="text" class="form-control" placeholder="请输入关键词" value="<?php echo $data['keywords']?>">
+            <input id="searchText" type="text" class="form-control" placeholder="请输入关键词">
             <span class="input-group-btn">
                 <button id="searchButton" class="btn btn-success" type="button">
                     <span class="glyphicon glyphicon-search" aria-hidden="true" aria-label="search"></span>
@@ -107,7 +127,7 @@
                     <a href='/article?id=$article->id'>
                         <img src='$article->litpic!300x180' width='100%'/>
                     </a>
-                    <h4 style='position: absolute; bottom: 20px; right: 20px; z-index: 10; color: #ffffff;';>$article->title</h4>
+                    <h4 class='scroll-title'>$article->title</h4>
                   </div>" ;
                 }
                 ?>
@@ -117,14 +137,14 @@
     </div>
 </div>
 
-<div id="healthyHeader" class="row">
-    <div class="col-xs-4" style="border-left: solid green ">
-        <h4 style="color: green">
+<div id="healthy-header" class="row">
+    <div class="col-xs-4 header-title">
+        <h4>
             健康字典
         </h4>
     </div>
     <div class="col-xs-3 col-xs-offset-5">
-        <h5 style="color: green;">
+        <h5>
             更多
         </h5>
     </div>
