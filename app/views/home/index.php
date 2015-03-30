@@ -6,11 +6,15 @@
     #header {
         padding: 10px 0;
         background-color: #e2f5e3;
-        margin: 0 -25px;
+    }
+
+    #search {
+        padding-left: 0px;
+        padding-right: 5px;
     }
 
     #scroll {
-        margin: 0 -30px;
+        padding: 0;
     }
 
     #healthy-header {
@@ -117,8 +121,8 @@
     </div>
 </div>
 
-<div id="scroll" class="row">
-    <div class="col-xs-12">
+<div class="row">
+    <div id="scroll" class="col-xs-12">
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <?php
