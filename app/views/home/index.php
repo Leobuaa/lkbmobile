@@ -56,28 +56,28 @@
         padding: 5px 11px;
     }
 
-    .bk-0 {
+    .bc-0 {
         background-color: #ea477f;
     }
-    .bk-1 {
+    .bc-1 {
         background-color: #fd7354;
     }
-    .bk-2 {
+    .bc-2 {
         background-color: #43a8e2;
     }
-    .bk-3 {
+    .bc-3 {
         background-color: #fcb60e;
     }
-    .bk-4 {
+    .bc-4 {
         background-color: #907dc0;
     }
-    .bk-5 {
+    .bc-5 {
         background-color: #62be98;
     }
-    .bk-6 {
+    .bc-6 {
         background-color: #ec9147;
     }
-    .bk-7 {
+    .bc-7 {
         background-color: #c37cd0;
     }
 
@@ -158,10 +158,10 @@
 
                     // 判断标签的长度，使用不同的css样式
                     if (strlen($value) == 6)
-                        echo "<li class='col-xs-3'><a href='/search?keywords=$value' class='a2 bk-$key'><p>". $value ."</p></a></li>";
+                        echo "<li class='col-xs-3'><a href='/search?keywords=$value' class='a2 bc-$key'><p>". $value ."</p></a></li>";
 
                     if (strlen($value) == 12)
-                        echo "<li class='col-xs-3'><a href='/search?keywords=$value' class='a4 bk-$key'><p>". $value ."</p></a></li>";
+                        echo "<li class='col-xs-3'><a href='/search?keywords=$value' class='a4 bc-$key'><p>". $value ."</p></a></li>";
                 }
             ?>
         </ul>
