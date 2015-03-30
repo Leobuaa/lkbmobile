@@ -145,7 +145,7 @@
     </div>
     <div class="col-xs-3 col-xs-offset-5">
         <h5>
-            更多
+            更 多
         </h5>
     </div>
 </div>
