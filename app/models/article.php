@@ -101,4 +101,20 @@ class Article extends \core\model {
         return $this->_db->select("SELECT id, keywords, title
                                   FROM dede_archives WHERE id<>$id AND ".$likeStatement.$orderStatement);
     }
+
+    /**
+     * 通过类别及页码返回文章的列表
+     *
+     * @param $type
+     * @param $page
+     * @return array
+     */
+    public function getArticleList($type, $page) {
+        $limitStatement = " LIMIT ".(10*($page - 1)).", 10";
+        if ($type == "wap")
+            return $this->_db->select("SELECT id, title, pubdate, litpic, description, writer
+                                       FROM dede_archives
+                                       WHERE flag LIKE '%w%'AND typeid in (SELECT id FROM dede_arctype WHERE topid
+                                       = '1' or topid = '2' or topid = '233') ORDER BY id DESC".$limitStatement);
+    }
 }

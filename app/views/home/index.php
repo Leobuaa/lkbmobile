@@ -112,8 +112,37 @@
         display: block !important;
     }
 
+    #wap-header {
+        background-color: #e2f5e3;
+        color: #008000;
+    }
+
+    #wap-header h5 {
+        text-align: right;
+    }
+
+    .article-item {
+        border-bottom: 1px solid #e2f5e3;
+        margin:0 1px;
+    }
+
+    .article-img {
+        margin: 10px 0;
+        padding: 0;
+    }
+
+    .article-word {
+        padding-right: 0;
+    }
+
+    .description {
+        text-decoration: none;
+        font-size: 1.3em;
+        color: #000000;
+    }
 </style>
 
+<!--显示logo和返回主页按钮-->
 <div id="header" class="row">
     <div class="col-xs-4 logo">
         <a href="/home">
@@ -132,6 +161,7 @@
     </div>
 </div>
 
+<!--显示滚动的文章列表-->
 <div class="row">
     <div id="scroll" class="col-xs-12">
         <div class="swiper-container">
@@ -152,6 +182,7 @@
     </div>
 </div>
 
+<!--健康字典标题栏-->
 <div id="healthy-header" class="row">
     <div class="col-xs-4 header-title">
         <h4>
@@ -168,6 +199,7 @@
     </div>
 </div>
 
+<!--显示健康字典的标签-->
 <div id="tag" class="row">
     <div class="col-xs-12">
         <ul>
@@ -186,15 +218,52 @@
     </div>
 </div>
 
+<!--显示精品咨询标题栏-->
+<div id="wap-header" class="row">
+    <div class="col-xs-4 header-title">
+        <h4>
+            精品咨询
+        </h4>
+    </div>
+    <div class="col-xs-3 col-xs-offset-5">
+        <h5 id="wapMore">
+            更多
+        </h5>
+    </div>
+</div>
 
-<h4>推荐列表文章标题</h4>
-<ul>
-    <?php
+<!--显示精品咨询的文章列表-->
+<?php
     foreach ($data['wapList'] as $article) {
-        echo "<li>".$article->title."</li>" ;
+        $description = $article->description;
+        $description = mb_substr($description, 0, 30, 'utf-8');
+        echo "<div class='row article-item'>
+                <div class='col-xs-5 article-img'>
+                    <a href='/article?id=$article->id'>
+                        <img src='$article->litpic!120x80' width='100%' height='100%' />
+                    </a>
+                </div>
+                <div class='col-xs-7 article-word'>
+                    <div class='row'>
+                        <div class='col-xs-12'>
+                            <a href='/article?id=$article->id'>
+                                <h4>
+                                    $article->title
+                                </h4>
+                            </a>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='col-xs-12'>
+                            <a href='/article?id=$article->id' class='description'>
+                                <p>$description</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+              </div>";
     }
-    ?>
-</ul>
+?>
 
 <script>
     window.onload = function() {
@@ -226,6 +295,10 @@
             $("a.tag-show").toggleClass("tag-show");
             $("#tagMore").toggleClass("tag-hidden");
             $("#tagCollapse").toggleClass("tag-hidden");
+        });
+
+        $("#wapMore").click(function() {
+            location.href = "/list?keywords=wap";
         });
     }
 </script>

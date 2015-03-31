@@ -66,9 +66,11 @@ use \core\router,
 //define routes
 Router::any('', '\controllers\welcome@index');
 Router::any('/subpage', '\controllers\welcome@subpage');
+
 Router::get('/home', '\controllers\home@index');
 Router::get('/search', '\controllers\lists@search');
 Router::get('/article', '\controllers\detail@article');
+Router::get('/list', '\controllers\lists@wapList');
 
 //if no route found
 Router::error('\core\error@index');

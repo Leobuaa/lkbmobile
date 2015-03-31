@@ -39,6 +39,22 @@ class Lists extends \core\controller {
         View::rendertemplate('footer', $data);
     }
 
+    public function wapList() {
+        $this->getParameters();
+
+        $data = [
+            'page' => $this->page,
+            'keywords' => $this->keywords,
+            'articleList' => $this->model->getArticleList($this->keywords, $this->page)
+        ];
+        $data['number'] = $this->getNumber($data);
+        $data['disable'] = $this->disableArray($data);
+
+        View::rendertemplate('header', $data);
+        View::render('list/wapList', $data);
+        View::rendertemplate('footer', $data);
+    }
+
     /**
      * 获取参数, 如关键字, 页码
      */

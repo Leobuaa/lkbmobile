@@ -1,3 +1,26 @@
+<p>Error on Mar 31, 2015 16:28PM - Invalid argument supplied for foreach() in /Users/leo/Documents/code/lkbmobile/app/views/list/wapList.php on line 87</p><p>Error on Mar 31, 2015 16:28PM - Invalid argument supplied for foreach() in /Users/leo/Documents/code/lkbmobile/app/views/list/wapList.php on line 87</p><h3>Exception information:</h3>
+
+		<p><strong>Date:</strong> Mar 31, 2015 16:18PM</p>
+
+		<p><strong>Message:</strong> SQLSTATE[HY000]: General error: 2013 Lost connection to MySQL server during query</p>
+
+		<p><strong>Code:</strong> HY000</p>
+
+		<p><strong>File:</strong> /Users/leo/Documents/code/lkbmobile/app/helpers/database.php</p>
+
+		<p><strong>Line:</strong> 87</p>
+
+		<h3>Stack trace:</h3>
+
+		<pre>#0 /Users/leo/Documents/code/lkbmobile/app/helpers/database.php(87): PDOStatement->execute()
+#1 /Users/leo/Documents/code/lkbmobile/app/models/Article.php(45): helpers\Database->select('SELECT id, titl...')
+#2 /Users/leo/Documents/code/lkbmobile/app/controllers/home.php(27): models\Article->getArticles(2)
+#3 /Users/leo/Documents/code/lkbmobile/app/core/router.php(85): controllers\Home->index()
+#4 /Users/leo/Documents/code/lkbmobile/app/core/router.php(236): core\Router::invokeObject('\\controllers\\ho...', Array)
+#5 /Users/leo/Documents/code/lkbmobile/index.php(80): core\Router::dispatch()
+#6 {main}</pre>
+
+		<hr />
 <h3>Exception information:</h3>
 
 		<p><strong>Date:</strong> Mar 31, 2015 14:07PM</p>
