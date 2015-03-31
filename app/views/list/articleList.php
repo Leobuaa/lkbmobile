@@ -1,6 +1,6 @@
 <!--css-->
 <style type="text/css">
-    #header {
+    #page-header {
         padding: 10px;
         background-color: #e2f5e3;
     }
@@ -44,7 +44,7 @@
     }
 </style>
 
-<div id="header" class="row">
+<div id="page-header" class="row">
     <div class="col-xs-2">
         <a href="/home">
         <img id="back" src="/images/fangzi.png" alt="back" />
@@ -106,7 +106,7 @@
                     <div class='row'>
                         <div class='col-xs-12'>
                             <a href='/article?id=$article->id' class='description'>
-                                <p>$description</p>
+                                <p>$description ...</p>
                             </a>
                         </div>
                     </div>

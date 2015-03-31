@@ -1,6 +1,6 @@
 <style type="text/css">
 
-    #header {
+    #page-header {
         padding: 10px;
         background-color: #e2f5e3;
     }
@@ -42,7 +42,7 @@
 
 
 <div id="page-header">
-    <div id="header" class="row">
+    <div id="page-header" class="row">
         <div class="col-xs-2">
             <a href="/home">
                 <img id="back" src="/images/fangzi.png" alt="back" />

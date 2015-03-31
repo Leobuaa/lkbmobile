@@ -3,7 +3,7 @@
         width: 100%;
     }
 
-    #header {
+    #page-header {
         padding: 8px 0;
         background-color: #e2f5e3;
     }
@@ -16,12 +16,12 @@
         padding: 0;
     }
 
-    #healthy-header {
+    .header {
         background-color: #e2f5e3;
         color: #008000;
     }
 
-    #healthy-header h5 {
+    .header h5 {
         text-align: right;
     }
 
@@ -112,15 +112,6 @@
         display: block !important;
     }
 
-    #wap-header {
-        background-color: #e2f5e3;
-        color: #008000;
-    }
-
-    #wap-header h5 {
-        text-align: right;
-    }
-
     .article-item {
         border-bottom: 1px solid #e2f5e3;
         margin:0 1px;
@@ -140,10 +131,45 @@
         font-size: 1.3em;
         color: #000000;
     }
+
+    .zy-img {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 0 10px !important;
+    }
+    .zy-img img{
+        display: block;
+        margin-left:auto;
+        margin-right:auto;
+        border-radius:4px;
+        width:100%;
+        height:auto;
+        border:1px solid #eee;
+    }
+
+    .btn-test {
+        display: block;
+        height:40px;
+        background: #29ab01;
+        margin-top:10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        color:#fff;
+        font-size: 16px;
+        text-align: center;
+        padding-top: 10px;
+    }
+
+    .foot-info {
+        text-align: center;
+        font-size: 14px;
+        margin-top:10px;
+        color:#666;
+    }
 </style>
 
 <!--显示logo和返回主页按钮-->
-<div id="header" class="row">
+<div id="page-header" class="row">
     <div class="col-xs-4 logo">
         <a href="/home">
             <img id="logo" src="/images/logo-2.png" width="90px" height="24px" alt="logo" />
@@ -183,7 +209,7 @@
 </div>
 
 <!--健康字典标题栏-->
-<div id="healthy-header" class="row">
+<div class="row header">
     <div class="col-xs-4 header-title">
         <h4>
             健康字典
@@ -218,8 +244,47 @@
     </div>
 </div>
 
+<!--显示中医体质-->
+<div class="row header">
+    <div class="col-xs-4 header-title">
+        <h4>中医体质</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-4 zy-img">
+        <a href="/search?keywords=平和质"><img src="images/1-13120Z92F3953.png"></a>
+    </div>
+    <div class="col-xs-4 zy-img">
+        <a href="/search?keywords=气虚质"><img src="images/1-13120Z92G2K9.png"></a>
+    </div>
+    <div class="col-xs-4 zy-img">
+        <a href="/search?keywords=气郁质"><img src="images/1-13120Z92I22B.png"></a>
+    </div>
+    <div class="col-xs-4 zy-img">
+        <a href="/search?keywords=阳虚质"><img src="images/1-13120Z92P5427.png"></a>
+    </div>
+    <div class="col-xs-4 zy-img">
+        <a href="/search?keywords=阴虚质"><img src="images/1-13120Z92H1132.png"></a>
+    </div>
+    <div class="col-xs-4 zy-img">
+        <a href="/search?keywords=湿热质"><img src="images/1-13120Z92G2K9.png"></a>
+    </div>
+    <div class="col-xs-4 zy-img">
+        <a href="/search?keywords=血瘀质"><img src="images/1-13120Z92A4611.png"></a>
+    </div>
+    <div class="col-xs-4 zy-img">
+        <a href="/search?keywords=痰湿质"><img src="images/1-13120Z92P5427.png"></a>
+    </div>
+    <div class="col-xs-4 zy-img">
+        <a href="/search?keywords=特禀质"><img src="images/1-13120Z92F3953.png"></a>
+    </div>
+</div>
+<div class="row">
+    <a href="http://www.lekangba.com/templets/lkbweixin/ceshi_demo.html" class="col-xs-10 col-xs-offset-1 btn-test">还不知道自己的体质? 快来测测吧</a>
+</div>
+
 <!--显示精品咨询标题栏-->
-<div id="wap-header" class="row">
+<div class="row header">
     <div class="col-xs-4 header-title">
         <h4>
             精品咨询
@@ -256,7 +321,7 @@
                     <div class='row'>
                         <div class='col-xs-12'>
                             <a href='/article?id=$article->id' class='description'>
-                                <p>$description</p>
+                                <p>$description ...</p>
                             </a>
                         </div>
                     </div>
@@ -264,6 +329,12 @@
               </div>";
     }
 ?>
+
+<footer class="row">
+    <div class="col-xs-12">
+        <p class="foot-info">© 2015 乐康吧 京ICP备12017187号</p>
+    </div>
+</footer>
 
 <script>
     window.onload = function() {
