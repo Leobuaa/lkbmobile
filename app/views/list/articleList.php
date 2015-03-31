@@ -7,8 +7,6 @@
 
     #search {
         margin-top: 5px;
-        padding-left: 0;
-        padding-right: 0;
     }
 
     #logo {
@@ -20,6 +18,29 @@
     p {
         font-size: 1.3em;
         color: #000000;
+    }
+
+    #hint-message {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    .article-item {
+        border-bottom: 1px solid #e2f5e3;
+        margin:0 1px;
+    }
+
+    .article-img {
+        margin: 10px 0;
+        padding: 0;
+    }
+
+    .article-word {
+        padding-right: 0;
+    }
+
+    .description {
+        text-decoration: none;
     }
 </style>
 
@@ -36,7 +57,7 @@
     </div>
 </div>
 
-<div class="row" style="padding: 0 15px">
+<div class="row">
     <div id="search" class="col-xs-12">
         <div class="input-group">
             <input id="searchText" type="text" class="form-control" placeholder="请输入关键词" value="<?php echo $data['keywords']?>">
@@ -50,20 +71,11 @@
 <?php
 
     // 当为首页时候上一页按钮失效, 当为最后一页时, 下一页按钮失效, true为失效
-    $disable = array(
-        'last' => false,
-        'next' => false
-    );
-    $number = count($data['articleList']); // 搜索结果的数量
-
-    if ($data['page'] == 1)
-        $disable['last'] = true;
-
-    if ($number < 10)
-        $disable['next'] = true;
+    $disable = $data['disable'];
+    $number = $data['number']; // 搜索结果的数量
 
     if ($number == 0)
-        echo "<div class='row' style='margin-top: 40px; margin-bottom: 40px'>
+        echo "<div id='hint-message' class='row'>
                 <div class='col-xs-2'></div>
                 <div class='col-xs-8'>
                     <p style='font-size: 2em'>
@@ -75,13 +87,13 @@
     foreach ($data['articleList'] as $article) {
         $description = $article->description;
         $description = mb_substr($description, 0, 30, 'utf-8');
-        echo "<div class='row' style='border-bottom: 1px solid #e2f5e3; margin:0 1px'>
-                <div class='col-xs-5' style='margin: 10px 0; padding: 0'>
+        echo "<div class='row article-item'>
+                <div class='col-xs-5 article-img'>
                     <a href='/article?id=$article->id'>
                         <img src='$article->litpic!120x80' width='100%' height='100%' />
                     </a>
                 </div>
-                <div class='col-xs-7' style='padding-right: 0'>
+                <div class='col-xs-7 article-word'>
                     <div class='row'>
                         <div class='col-xs-12'>
                             <a href='/article?id=$article->id'>
@@ -93,7 +105,7 @@
                     </div>
                     <div class='row'>
                         <div class='col-xs-12'>
-                            <a href='/article?id=$article->id' style='text-decoration: none'>
+                            <a href='/article?id=$article->id' class='description'>
                                 <p>$description</p>
                             </a>
                         </div>

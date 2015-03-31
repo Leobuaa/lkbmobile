@@ -4,13 +4,12 @@
     }
 
     #header {
-        padding: 10px 0;
+        padding: 8px 0;
         background-color: #e2f5e3;
     }
 
     #search {
-        padding-left: 0px;
-        padding-right: 5px;
+        padding: 0 15px;
     }
 
     #scroll {
@@ -52,11 +51,15 @@
         list-style: none;
     }
 
-    .a2 {
+    .a-2 {
         padding: 17px 11px;
     }
 
-    .a4 {
+    .a-3 {
+        padding: 5px 11px;
+    }
+
+    .a-4 {
         padding: 5px 11px;
     }
 
@@ -99,6 +102,14 @@
 
     .header-title {
         border-left: solid green;
+    }
+
+    .tag-hidden {
+        display: none !important;
+    }
+
+    .tag-show {
+        display: block !important;
     }
 
 </style>
@@ -148,8 +159,11 @@
         </h4>
     </div>
     <div class="col-xs-3 col-xs-offset-5">
-        <h5>
-            更 多
+        <h5 id="tagMore">
+            更多
+        </h5>
+        <h5 id="tagCollapse" class="tag-hidden">
+            收起
         </h5>
     </div>
 </div>
@@ -160,12 +174,12 @@
             <?php
                 foreach($data['tags'] as $key => $value) {
 
-                    // 判断标签的长度，使用不同的css样式
-                    if (strlen($value) == 6)
-                        echo "<li class='col-xs-3'><a href='/search?keywords=$value' class='a2 bc-$key'><p>". $value ."</p></a></li>";
+                    $bc = $key % 8;  // 背景颜色的种类, 总共有8个
+                    $hiddenFlag = $key>=8 ? 'tag-hidden' : ' ';  // 一开始并不显示后8个标签
+                    $tagLength = strlen($value) / 3; // 判断标签的长度，使用不同的css样式，一个中文字符占3个字符长度
 
-                    if (strlen($value) == 12)
-                        echo "<li class='col-xs-3'><a href='/search?keywords=$value' class='a4 bc-$key'><p>". $value ."</p></a></li>";
+                    echo "<li class='col-xs-3'><a href='/search?keywords=$value' class='a-$tagLength bc-$bc $hiddenFlag'><p>". $value ."</p></a></li>";
+
                 }
             ?>
         </ul>
@@ -200,6 +214,18 @@
         $("#searchButton").click(function() {
             var keywords = $("#searchText").val();
             location.href = "/search?keywords=" + keywords;
+        });
+
+        $("#tagMore").click(function() {
+            $("a.tag-hidden").toggleClass("tag-show");
+            $("#tagMore").toggleClass("tag-hidden");
+            $("#tagCollapse").toggleClass("tag-hidden");
+        });
+
+        $("#tagCollapse").click(function() {
+            $("a.tag-show").toggleClass("tag-show");
+            $("#tagMore").toggleClass("tag-hidden");
+            $("#tagCollapse").toggleClass("tag-hidden");
         });
     }
 </script>

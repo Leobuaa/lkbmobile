@@ -31,6 +31,8 @@ class Lists extends \core\controller {
             'keywords' => $this->keywords,
             'articleList' => $this->model->search($this->keywords, $this->page)
         ];
+        $data['number'] = $this->getNumber($data);
+        $data['disable'] = $this->disableArray($data);
 
         View::rendertemplate('header', $data);
         View::render('list/articleList', $data);
@@ -46,5 +48,33 @@ class Lists extends \core\controller {
 
         if (isset($_GET['page']))
             $this->page = $_GET['page'];
+    }
+
+    /**
+     * 返回搜索结果的数量
+     * @param $data
+     * @return int
+     */
+    private function getNumber($data) {
+        return count($data['articleList']);
+    }
+
+    /**
+     * 返回翻页按钮的设置
+     * @param $data
+     * @return array
+     */
+    private function disableArray($data) {
+        $disable = array(
+            'last' => false,
+            'next' => false,
+        );
+        if ($data['page'] == 1)
+            $disable['last'] = true;
+
+        if ($data['number'] < 10)
+            $disable['next'] = true;
+
+        return $disable;
     }
 }

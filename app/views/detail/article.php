@@ -14,15 +14,9 @@
 
 
     #logo {
+        padding-left: 20%;
         width: 108px;
         height: 22px;
-    }
-
-    #title {
-        margin-top: 5px;
-        margin-bottom: 5px;
-        font-size: 28px;
-        font: ;
     }
 
     a:link {
@@ -37,6 +31,12 @@
     a:active {
         text-decoration: none;
     }
+
+
+    #article img{
+        width: 90% !important;
+        height: auto !important;
+    }
 </style>
 
 
@@ -48,8 +48,7 @@
                 <img id="back" src="/images/fangzi.png" alt="back" />
             </a>
         </div>
-        <div class="col-xs-2"></div>
-        <div class="col-xs-8 ">
+        <div class="col-xs-5 col-xs-offset-1">
             <a href="/home">
                 <img id="logo" src="/images/logo-2.png" alt="logo" />
             </a>
@@ -57,7 +56,7 @@
     </div>
 
 
-    <h2><?php echo $data['article'][0]->title ?></h2>
+    <h3><?php echo $data['article'][0]->title ?></h3>
 
     <small>
         <?php
@@ -73,12 +72,13 @@
 
 
 
+<div id="article">
+    <?php
 
-<?php
 
-
-echo $data['article'][0]->body
-?>
+    echo $data['article'][0]->body
+    ?>
+</div>
 
 <div style="background-color:#e2f5e3">
     <div>
