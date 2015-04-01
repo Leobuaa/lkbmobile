@@ -1,17 +1,15 @@
 <style type="text/css">
 
-    #page-header {
+    #page-header{
         padding: 10px;
         background-color: #e2f5e3;
     }
 
-    #page-header{
+    #title {
         padding-bottom: 9px;
         margin: 0px 0 20px;
         border-bottom: 1px solid #eee;
     }
-
-
 
     #logo {
         padding-left: 20%;
@@ -40,35 +38,30 @@
 </style>
 
 
-
-<div id="page-header">
-    <div id="page-header" class="row">
-        <div class="col-xs-2">
-            <a href="/home">
-                <img id="back" src="/images/fangzi.png" alt="back" />
-            </a>
-        </div>
-        <div class="col-xs-5 col-xs-offset-1">
-            <a href="/home">
-                <img id="logo" src="/images/logo-2.png" alt="logo" />
-            </a>
-        </div>
+<div id="page-header" class="row">
+    <div class="col-xs-2">
+        <a href="/home">
+            <img id="back" src="/images/fangzi.png" alt="back" />
+        </a>
     </div>
-
-
-    <h3><?php echo $data['article'][0]->title ?></h3>
-
-    <small>
-        <?php
-        echo $data['article'][0]->writer;
-        echo " |";
-        echo $data['article'][0]->pubdate
-        ?>
-    </small>
-
+    <div class="col-xs-5 col-xs-offset-1">
+        <a href="/home">
+            <img id="logo" src="/images/logo-2.png" alt="logo" />
+        </a>
+    </div>
 </div>
 
+<div id="title">
+<h3><?php echo $data['article'][0]->title ?></h3>
 
+<small>
+    <?php
+        echo $data['article'][0]->writer;
+        echo " |";
+        echo $data['article'][0]->pubdate;
+    ?>
+</small>
+</div>
 
 
 
@@ -81,10 +74,10 @@
 </div>
 
 <div style="background-color:#e2f5e3">
-    <div>
+    <div style="padding-left:15px;padding-top:3px">
         <h4>相关文章</h4>
     </div>
-    <div>
+    <div style="padding-bottom:1px">
         <ul >
             <?php
             foreach ($data['relatedArticles'] as $article) {

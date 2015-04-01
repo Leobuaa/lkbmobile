@@ -127,7 +127,7 @@
     }
 
     .description {
-        text-decoration: none;
+        text-decoration: none !important;
         font-size: 1.3em;
         color: #000000;
     }
@@ -155,7 +155,7 @@
         margin-bottom: 10px;
         border-radius: 4px;
         color:#fff;
-        font-size: 16px;
+        font-size: 15px;
         text-align: center;
         padding-top: 10px;
     }
@@ -209,17 +209,17 @@
 </div>
 
 <!--健康字典标题栏-->
-<div class="row header">
+<div class="row header" id="health-header">
     <div class="col-xs-4 header-title">
         <h4>
             健康字典
         </h4>
     </div>
     <div class="col-xs-3 col-xs-offset-5">
-        <h5 id="tagMore">
+        <h5 id="tag-more">
             更多
         </h5>
-        <h5 id="tagCollapse" class="tag-hidden">
+        <h5 id="tag-collapse" class="tag-hidden">
             收起
         </h5>
     </div>
@@ -252,31 +252,31 @@
 </div>
 <div class="row">
     <div class="col-xs-4 zy-img">
-        <a href="/search?keywords=平和质"><img src="images/1-13120Z92F3953.png"></a>
+        <a href="/search?keywords=平和质"><img src="images/平和质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="/search?keywords=气虚质"><img src="images/1-13120Z92G2K9.png"></a>
+        <a href="/search?keywords=气虚质"><img src="images/气虚质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="/search?keywords=气郁质"><img src="images/1-13120Z92I22B.png"></a>
+        <a href="/search?keywords=气郁质"><img src="images/气郁质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="/search?keywords=阳虚质"><img src="images/1-13120Z92P5427.png"></a>
+        <a href="/search?keywords=阳虚质"><img src="images/阳虚质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="/search?keywords=阴虚质"><img src="images/1-13120Z92H1132.png"></a>
+        <a href="/search?keywords=阴虚质"><img src="images/阴虚质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="/search?keywords=湿热质"><img src="images/1-13120Z92G2K9.png"></a>
+        <a href="/search?keywords=湿热质"><img src="images/湿热质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="/search?keywords=血瘀质"><img src="images/1-13120Z92A4611.png"></a>
+        <a href="/search?keywords=血瘀质"><img src="images/血瘀质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="/search?keywords=痰湿质"><img src="images/1-13120Z92P5427.png"></a>
+        <a href="/search?keywords=痰湿质"><img src="images/痰湿质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="/search?keywords=特禀质"><img src="images/1-13120Z92F3953.png"></a>
+        <a href="/search?keywords=特禀质"><img src="images/特禀质.png"></a>
     </div>
 </div>
 <div class="row">
@@ -356,16 +356,18 @@
             location.href = "/search?keywords=" + keywords;
         });
 
-        $("#tagMore").click(function() {
+        $("#tag-more").click(function() {
             $("a.tag-hidden").toggleClass("tag-show");
-            $("#tagMore").toggleClass("tag-hidden");
-            $("#tagCollapse").toggleClass("tag-hidden");
+            $("#tag-more").toggleClass("tag-hidden");
+            $("#tag-collapse").toggleClass("tag-hidden");
+
+            $("html,body").animate({scrollTop:$("#health-header").offset().top},400);
         });
 
-        $("#tagCollapse").click(function() {
+        $("#tag-collapse").click(function() {
             $("a.tag-show").toggleClass("tag-show");
-            $("#tagMore").toggleClass("tag-hidden");
-            $("#tagCollapse").toggleClass("tag-hidden");
+            $("#tag-more").toggleClass("tag-hidden");
+            $("#tag-collapse").toggleClass("tag-hidden");
         });
 
         $("#wapMore").click(function() {
