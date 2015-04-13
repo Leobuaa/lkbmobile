@@ -7,7 +7,7 @@
  */
 namespace controllers;
 use core\view;
-use models\Article;
+use models\article;
 
 class Lists extends \core\controller {
 
@@ -26,11 +26,11 @@ class Lists extends \core\controller {
     public function search() {
         $this->getParameters();
 
-        $data = [
+        $data = array (
             'page' => $this->page,
             'keywords' => $this->keywords,
             'articleList' => $this->model->search($this->keywords, $this->page)
-        ];
+        );
         $data['number'] = $this->getNumber($data);
         $data['disable'] = $this->disableArray($data);
 
@@ -42,11 +42,11 @@ class Lists extends \core\controller {
     public function wapList() {
         $this->getParameters();
 
-        $data = [
+        $data = array(
             'page' => $this->page,
             'keywords' => $this->keywords,
             'articleList' => $this->model->getArticleList($this->keywords, $this->page)
-        ];
+        );
         $data['number'] = $this->getNumber($data);
         $data['disable'] = $this->disableArray($data);
 

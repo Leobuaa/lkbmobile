@@ -171,8 +171,8 @@
 <!--显示logo和返回主页按钮-->
 <div id="page-header" class="row">
     <div class="col-xs-4 logo">
-        <a href="/home">
-            <img id="logo" src="/images/logo-2.png" width="90px" height="24px" alt="logo" />
+        <a href="<?php echo DIR;?>home">
+            <img id="logo" src="<?php echo DIR;?>images/logo-2.png" width="90px" height="24px" alt="logo" />
         </a>
     </div>
     <div id="search" class="col-xs-8">
@@ -194,8 +194,9 @@
             <div class="swiper-wrapper">
                 <?php
                 foreach ($data['scrollList'] as $article) {
+                    $href = DIR. "article?id=$article->id";
                     echo "<div class='swiper-slide'>
-                    <a href='/article?id=$article->id'>
+                    <a href='$href'>
                         <img src='$article->litpic!300x180' width='100%'/>
                     </a>
                     <h4 class='scroll-title'>$article->title</h4>
@@ -235,8 +236,9 @@
                     $bc = $key % 8;  // 背景颜色的种类, 总共有8个
                     $hiddenFlag = $key>=8 ? 'tag-hidden' : ' ';  // 一开始并不显示后8个标签
                     $tagLength = strlen($value) / 3; // 判断标签的长度，使用不同的css样式，一个中文字符占3个字符长度
+                    $href = DIR. "search?keywords=$value";
 
-                    echo "<li class='col-xs-3'><a href='/search?keywords=$value' class='a-$tagLength bc-$bc $hiddenFlag'><p>". $value ."</p></a></li>";
+                    echo "<li class='col-xs-3'><a href='$href' class='a-$tagLength bc-$bc $hiddenFlag'><p>". $value ."</p></a></li>";
 
                 }
             ?>
@@ -252,31 +254,31 @@
 </div>
 <div class="row">
     <div class="col-xs-4 zy-img">
-        <a href="/search?keywords=平和质"><img src="images/平和质.png"></a>
+        <a href="<?php echo DIR;?>search?keywords=平和质"><img src="images/平和质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="/search?keywords=气虚质"><img src="images/气虚质.png"></a>
+        <a href="<?php echo DIR;?>search?keywords=气虚质"><img src="images/气虚质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="/search?keywords=气郁质"><img src="images/气郁质.png"></a>
+        <a href="<?php echo DIR;?>search?keywords=气郁质"><img src="images/气郁质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="/search?keywords=阳虚质"><img src="images/阳虚质.png"></a>
+        <a href="<?php echo DIR;?>search?keywords=阳虚质"><img src="images/阳虚质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="/search?keywords=阴虚质"><img src="images/阴虚质.png"></a>
+        <a href="<?php echo DIR;?>search?keywords=阴虚质"><img src="images/阴虚质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="/search?keywords=湿热质"><img src="images/湿热质.png"></a>
+        <a href="<?php echo DIR;?>search?keywords=湿热质"><img src="images/湿热质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="/search?keywords=血瘀质"><img src="images/血瘀质.png"></a>
+        <a href="<?php echo DIR;?>search?keywords=血瘀质"><img src="images/血瘀质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="/search?keywords=痰湿质"><img src="images/痰湿质.png"></a>
+        <a href="<?php echo DIR;?>search?keywords=痰湿质"><img src="images/痰湿质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="/search?keywords=特禀质"><img src="images/特禀质.png"></a>
+        <a href="<?php echo DIR;?>search?keywords=特禀质"><img src="images/特禀质.png"></a>
     </div>
 </div>
 <div class="row">
@@ -302,16 +304,17 @@
     foreach ($data['wapList'] as $article) {
         $description = $article->description;
         $description = mb_substr($description, 0, 30, 'utf-8');
+        $href = DIR. "article?id=$article->id";
         echo "<div class='row article-item'>
                 <div class='col-xs-5 article-img'>
-                    <a href='/article?id=$article->id'>
+                    <a href='$href'>
                         <img src='$article->litpic!120x80' width='100%' height='100%' />
                     </a>
                 </div>
                 <div class='col-xs-7 article-word'>
                     <div class='row'>
                         <div class='col-xs-12'>
-                            <a href='/article?id=$article->id'>
+                            <a href='$href'>
                                 <h4>
                                     $article->title
                                 </h4>
@@ -320,7 +323,7 @@
                     </div>
                     <div class='row'>
                         <div class='col-xs-12'>
-                            <a href='/article?id=$article->id' class='description'>
+                            <a href='$href' class='description'>
                                 <p>$description ...</p>
                             </a>
                         </div>
@@ -338,6 +341,7 @@
 
 <script>
     window.onload = function() {
+        var dir = "<?php echo DIR; ?>";
         $(document).ready(function () {
             //initialize swiper when document ready
             var mySwiper = new Swiper ('.swiper-container', {
@@ -353,7 +357,7 @@
 
         $("#searchButton").click(function() {
             var keywords = $("#searchText").val();
-            location.href = "/search?keywords=" + keywords;
+            location.href = dir + "search?keywords=" + keywords;
         });
 
         $("#tag-more").click(function() {
@@ -371,7 +375,7 @@
         });
 
         $("#wapMore").click(function() {
-            location.href = "/list?keywords=wap";
+            location.href = dir + "list?keywords=wap";
         });
     }
 </script>

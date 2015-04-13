@@ -7,7 +7,7 @@
  */
 namespace controllers;
 use core\view;
-use models\Article;
+use models\article;
 
 class Detail extends \core\controller {
 
@@ -25,12 +25,11 @@ class Detail extends \core\controller {
         if (isset($_GET['id']))
             $this->id = $_GET['id'];
 
-        $data = [
+        $data = array (
             'title' => 'Test Page',
             'message' => 'Hello, this is a test page!',
             'article' => $this->model->getDetailArticle($this->id),
-            'relatedArticles' => $this->model->getRelatedArticle($this->id),
-        ];
+            'relatedArticles' => $this->model->getRelatedArticle($this->id));
 
         View::rendertemplate('header', $data);
         View::render('detail/article', $data);

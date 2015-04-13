@@ -7,7 +7,7 @@
  */
 namespace controllers;
 use core\view;
-use models\Article;
+use models\article;
 
 class Home extends \core\controller {
 
@@ -19,13 +19,14 @@ class Home extends \core\controller {
     }
 
     public function index() {
-        $data = [
+
+        $data = array(
             'title' => 'Test Page',
             'message' => 'Hello, this is a test page!',
             'tags' => $this->model->getTags(),
             'scrollList' => $this->model->getArticles(1),
             'wapList' => $this->model->getArticles(2)
-        ];
+        );
 
         View::rendertemplate('header', $data);
         View::render('home/index', $data);

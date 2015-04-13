@@ -46,13 +46,13 @@
 
 <div id="page-header" class="row">
     <div class="col-xs-2">
-        <a href="/home">
-        <img id="back" src="/images/fangzi.png" alt="back" />
+        <a href="<?php echo DIR;?>home">
+        <img id="back" src="<?php echo DIR;?>images/fangzi.png" alt="back" />
         </a>
     </div>
     <div class="col-xs-5 col-xs-offset-1">
-        <a href="/home">
-            <img id="logo" src="/images/logo-2.png" alt="logo" />
+        <a href="<?php echo DIR;?>home">
+            <img id="logo" src="<?php echo DIR;?>images/logo-2.png" alt="logo" />
         </a>
     </div>
 </div>
@@ -87,16 +87,17 @@
     foreach ($data['articleList'] as $article) {
         $description = $article->description;
         $description = mb_substr($description, 0, 30, 'utf-8');
+        $href = DIR. "article?id=$article->id";
         echo "<div class='row article-item'>
                 <div class='col-xs-5 article-img'>
-                    <a href='/article?id=$article->id'>
+                    <a href='$href'>
                         <img src='$article->litpic!120x80' width='100%' height='100%' />
                     </a>
                 </div>
                 <div class='col-xs-7 article-word'>
                     <div class='row'>
                         <div class='col-xs-12'>
-                            <a href='/article?id=$article->id'>
+                            <a href='$href'>
                                 <h4>
                                     $article->title
                                 </h4>
@@ -105,7 +106,7 @@
                     </div>
                     <div class='row'>
                         <div class='col-xs-12'>
-                            <a href='/article?id=$article->id' class='description'>
+                            <a href='$href' class='description'>
                                 <p>$description ...</p>
                             </a>
                         </div>
@@ -136,21 +137,22 @@
 
 <script>
     window.onload = function() {
-        var page = <?php echo $data['page']; ?>
+        var page = <?php echo $data['page']; ?>;
+        var dir = "<?php echo DIR; ?>";
 
         $("#searchButton").click(function() {
             var keywords = $("#searchText").val();
-            location.href = "/search?keywords=" + keywords;
+            location.href = dir + "search?keywords=" + keywords;
         });
 
         $("#lastPage").click(function() {
             var keywords = 'wap';
-            location.href = "/list?keywords=" + keywords + "&page=" + (page - 1);
+            location.href = dir + "list?keywords=" + keywords + "&page=" + (page - 1);
         });
 
         $("#nextPage").click(function() {
             var keywords = 'wap';
-            location.href = "/list?keywords=" + keywords + "&page=" + (page + 1);
+            location.href = dir + "list?keywords=" + keywords + "&page=" + (page + 1);
         });
     }
 </script>

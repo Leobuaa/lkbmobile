@@ -40,13 +40,13 @@
 
 <div id="page-header" class="row">
     <div class="col-xs-2">
-        <a href="/home">
-            <img id="back" src="/images/fangzi.png" alt="back" />
+        <a href="<?php echo DIR;?>home">
+            <img id="back" src="<?php echo DIR;?>images/fangzi.png" alt="back" />
         </a>
     </div>
     <div class="col-xs-5 col-xs-offset-1">
-        <a href="/home">
-            <img id="logo" src="/images/logo-2.png" alt="logo" />
+        <a href="<?php echo DIR;?>home">
+            <img id="logo" src="<?php echo DIR;?>images/logo-2.png" alt="logo" />
         </a>
     </div>
 </div>
@@ -69,7 +69,11 @@
     <?php
 
 
-    echo $data['article'][0]->body
+    $body=$data['article'][0]->body;
+        //将文章中图片替换为又拍手机版
+        $body = preg_replace('/(<[^<]*img).+(src="?.+(jpg|gif|bmp|bnp|png))[^>]*>/i','$1 $2">',$body);
+        $body = preg_replace('/(<img).+(src="?http:\/\/img1.+(jpg|gif|bmp|bnp|png))[^>]*>/i','$1 $2!wapa">',$body);
+        echo $body;
     ?>
 </div>
 
@@ -82,8 +86,9 @@
             <?php
             foreach ($data['relatedArticles'] as $article) {
                 $idRela=$article->id;
-                echo "<li style='padding-bottom: 5px;'><a href='article?id=".$idRela."'>".$article->title."</a></li>";
-            }
+                $href = DIR. "article?id=$idRela";
+                echo "<li style='padding-bottom: 5px;'><a href='$href'>".$article->title."</a></li>";
+                }
             ?>
         </ul>
     </div>
