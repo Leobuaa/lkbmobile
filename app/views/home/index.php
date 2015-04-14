@@ -254,31 +254,31 @@
 </div>
 <div class="row">
     <div class="col-xs-4 zy-img">
-        <a href="<?php echo DIR;?>search?keywords=平和质"><img src="images/平和质.png"></a>
+        <a href="<?php echo DIR;?>search?keywords=平和"><img src="images/平和质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="<?php echo DIR;?>search?keywords=气虚质"><img src="images/气虚质.png"></a>
+        <a href="<?php echo DIR;?>search?keywords=气虚"><img src="images/气虚质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="<?php echo DIR;?>search?keywords=气郁质"><img src="images/气郁质.png"></a>
+        <a href="<?php echo DIR;?>search?keywords=气郁"><img src="images/气郁质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="<?php echo DIR;?>search?keywords=阳虚质"><img src="images/阳虚质.png"></a>
+        <a href="<?php echo DIR;?>search?keywords=阳虚"><img src="images/阳虚质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="<?php echo DIR;?>search?keywords=阴虚质"><img src="images/阴虚质.png"></a>
+        <a href="<?php echo DIR;?>search?keywords=阴虚"><img src="images/阴虚质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="<?php echo DIR;?>search?keywords=湿热质"><img src="images/湿热质.png"></a>
+        <a href="<?php echo DIR;?>search?keywords=湿热"><img src="images/湿热质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="<?php echo DIR;?>search?keywords=血瘀质"><img src="images/血瘀质.png"></a>
+        <a href="<?php echo DIR;?>search?keywords=血瘀"><img src="images/血瘀质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="<?php echo DIR;?>search?keywords=痰湿质"><img src="images/痰湿质.png"></a>
+        <a href="<?php echo DIR;?>search?keywords=痰湿"><img src="images/痰湿质.png"></a>
     </div>
     <div class="col-xs-4 zy-img">
-        <a href="<?php echo DIR;?>search?keywords=特禀质"><img src="images/特禀质.png"></a>
+        <a href="<?php echo DIR;?>search?keywords=特禀"><img src="images/特禀质.png"></a>
     </div>
 </div>
 <div class="row">

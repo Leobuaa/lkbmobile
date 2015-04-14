@@ -36,13 +36,15 @@ class Article extends \core\model {
         if ($type == 1)
             return $this->_db->select("SELECT id, title, pubdate, litpic, description, writer
                                        FROM dede_archives
-                                       WHERE flag LIKE '%s%'AND typeid in (SELECT id FROM dede_arctype WHERE topid
-                                       = '1' or topid = '2' or topid = '233') ORDER BY id DESC LIMIT 0, 10");
+                                       WHERE flag LIKE '%s%'AND typeid in (SELECT id
+                                       FROM dede_arctype
+                                       WHERE reid in (1, 2, 240, 242) or id = 244) ORDER BY id DESC LIMIT 0, 10");
         else
             return $this->_db->select("SELECT id, title, pubdate, litpic, description, writer
                                        FROM dede_archives
-                                       WHERE flag LIKE '%w%'AND typeid in (SELECT id FROM dede_arctype WHERE topid
-                                       = '1' or topid = '2' or topid = '233') ORDER BY id DESC LIMIT 0, 5");
+                                       WHERE flag LIKE '%w%'AND typeid in (SELECT id
+                                       FROM dede_arctype
+                                       WHERE reid in (1, 2, 240, 242) or id = 244) ORDER BY id DESC LIMIT 0, 5");
     }
 
 
@@ -66,7 +68,9 @@ class Article extends \core\model {
         $limitStatement = " LIMIT ".(10*($page - 1)).", 10";
         return $this->_db->select("SELECT id, title, pubdate, litpic, description, writer
                                    FROM dede_archives
-                                   WHERE ".$likeStatement.$orderStatement.$limitStatement);
+                                   WHERE typeid in (SELECT id
+                                   FROM dede_arctype
+                                   WHERE reid in (1, 2, 240, 242) or id = 244) AND".$likeStatement.$orderStatement.$limitStatement);
     }
 
     /**
@@ -101,7 +105,9 @@ class Article extends \core\model {
         $likeStatement = implode(" OR", $likeStatementArray);
         $orderStatement = " ORDER BY pubdate LIMIT 0, 3";
         return $this->_db->select("SELECT id, keywords, title
-                                  FROM dede_archives WHERE id<>$id AND ".$likeStatement.$orderStatement);
+                                   FROM dede_archives WHERE id<>$id AND typeid in (SELECT id
+                                   FROM dede_arctype
+                                   WHERE reid in (1, 2, 240, 242) or id = 244) AND".$likeStatement.$orderStatement);
     }
 
     /**
@@ -116,7 +122,8 @@ class Article extends \core\model {
         if ($type == "wap")
             return $this->_db->select("SELECT id, title, pubdate, litpic, description, writer
                                        FROM dede_archives
-                                       WHERE flag LIKE '%w%'AND typeid in (SELECT id FROM dede_arctype WHERE topid
-                                       = '1' or topid = '2' or topid = '233') ORDER BY id DESC".$limitStatement);
+                                       WHERE flag LIKE '%w%'AND typeid in (SELECT id
+                                       FROM dede_arctype
+                                       WHERE reid in (1, 2, 240, 242) or id = 244) ORDER BY id DESC".$limitStatement);
     }
 }
