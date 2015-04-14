@@ -5,7 +5,7 @@
 	<!-- Site meta -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title><?php echo $data['title'].' - '.SITETITLE; //SITETITLE defined in app/core/config.php ?></title>
+	<title><?php echo '乐康吧'.' - '.SITETITLE; //SITETITLE defined in app/core/config.php ?></title>
 
 	<!-- CSS -->
 	<?php
