@@ -56,8 +56,6 @@ class Article extends \core\model {
      * @return array
      */
     public function search($keywords, $page) {
-        if ($keywords == "")
-            $keywords = "痛风";
         $keywordArray = explode(' ', $keywords);
         $likeStatementArray = array();
         foreach($keywordArray as $keyword) {
