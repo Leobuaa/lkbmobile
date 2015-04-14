@@ -7,7 +7,7 @@
  */
 namespace models;
 
-class NewsModel extends \core\model {
+class News extends \core\model {
 
     public function __construct() {
         parent::__construct();
@@ -32,6 +32,10 @@ class NewsModel extends \core\model {
     }
 
     public function getNewsDetail($id) {
-
+        return $this->_db->select("SELECT addon.body as newsBody
+                                  FROM dede_archives arc
+                                  LEFT JOIN dede_arctype tp ON tp.id=arc.typeid
+                                  LEFT JOIN dede_addonarticle addon ON addon.aid=arc.id
+                                  WHERE arc.id='$id'");
     }
 }
