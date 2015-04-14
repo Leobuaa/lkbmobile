@@ -64,7 +64,7 @@ use \core\router,
     \helpers\url;
 
 //define routes
-Router::any('', '\controllers\welcome@index');
+Router::any('', '\controllers\home@index');
 Router::any('/subpage', '\controllers\welcome@subpage');
 
 Router::get('/home', '\controllers\home@index');
