@@ -6,6 +6,7 @@
  * Time: 3:34 PM
  */
 namespace controllers;
+use models\newsModel;
 
 class News extends \core\controller {
 
@@ -14,7 +15,7 @@ class News extends \core\controller {
 
     public function __construct() {
         parent::__construct();
-        $this->model = new \models\News();
+        $this->model = new NewsModel();
         $this->response = array(
             'success' =>  'true',
             'msg' => '',
