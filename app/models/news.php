@@ -7,7 +7,7 @@
  */
 namespace models;
 
-class NewsModel extends \core\model {
+class News extends \core\model {
 
     public function __construct() {
         parent::__construct();
