@@ -40,7 +40,10 @@ class News extends \core\controller {
         $newsId = $this->getPara("newsId");
         if ($newsId == null) {
             $this->response['success'] = 'false';
-            $this->response['msg'] = '';
+            $this->response['msg'] = '缺少参数，无法返回正确的结果';
+            $this->response['data'] = '';
+        } else {
+            $this->response['data'] = $this->model->getNewsDetail($newsId)[0];
         }
         echo json_encode($this->response);
     }
