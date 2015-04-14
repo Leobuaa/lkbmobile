@@ -72,6 +72,10 @@ Router::get('/search', '\controllers\lists@search');
 Router::get('/article', '\controllers\detail@article');
 Router::get('/list', '\controllers\lists@wapList');
 
+// API for 云诊所
+Router::any('/getNewsList', '\controllers\news@getNewsList');
+Router::any('/getNewsDetail', '\controllers\news@getNewsDetail');
+
 //if no route found
 Router::error('\core\error@index');
 
