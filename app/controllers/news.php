@@ -20,6 +20,7 @@ class News extends \core\controller {
             'success' =>  'true',
             'msg' => '',
         );
+        header("Content-Type: application/json;charset=UTF-8");
     }
 
     public function getNewsList() {
