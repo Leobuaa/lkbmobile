@@ -38,13 +38,13 @@ class Article extends \core\model {
                                        FROM dede_archives
                                        WHERE flag LIKE '%s%'AND typeid in (SELECT id
                                        FROM dede_arctype
-                                       WHERE reid in (1, 2, 240, 242) or id = 244) ORDER BY id DESC LIMIT 0, 10");
+                                       WHERE reid in (1, 2, 240, 242) or id = 244) AND arcrank = 0 ORDER BY id DESC LIMIT 0, 10");
         else
             return $this->_db->select("SELECT id, title, pubdate, litpic, description, writer
                                        FROM dede_archives
                                        WHERE flag LIKE '%w%'AND typeid in (SELECT id
                                        FROM dede_arctype
-                                       WHERE reid in (1, 2, 240, 242) or id = 244) ORDER BY id DESC LIMIT 0, 5");
+                                       WHERE reid in (1, 2, 240, 242) or id = 244) AND arcrank = 0 ORDER BY id DESC LIMIT 0, 5");
     }
 
 
@@ -68,7 +68,7 @@ class Article extends \core\model {
                                    FROM dede_archives
                                    WHERE typeid in (SELECT id
                                    FROM dede_arctype
-                                   WHERE reid in (1, 2, 240, 242) or id = 244) AND".$likeStatement.$orderStatement.$limitStatement);
+                                   WHERE reid in (1, 2, 240, 242) or id = 244) AND arcrank = 0 AND".$likeStatement.$orderStatement.$limitStatement);
     }
 
     /**
@@ -83,7 +83,7 @@ class Article extends \core\model {
                                   FROM dede_archives arc
                                   LEFT JOIN dede_arctype tp ON tp.id=arc.typeid
                                   LEFT JOIN dede_addonarticle addon ON addon.aid=arc.id
-                                  WHERE arc.id='$id'");
+                                  WHERE arc.id='$id' AND arc.arcrank = 0");
     }
 
     /**
@@ -105,7 +105,7 @@ class Article extends \core\model {
         return $this->_db->select("SELECT id, keywords, title
                                    FROM dede_archives WHERE id<>$id AND typeid in (SELECT id
                                    FROM dede_arctype
-                                   WHERE reid in (1, 2, 240, 242) or id = 244) AND".$likeStatement.$orderStatement);
+                                   WHERE reid in (1, 2, 240, 242) or id = 244) AND arcrank = 0 AND (".$likeStatement.")".$orderStatement);
     }
 
     /**
@@ -122,6 +122,6 @@ class Article extends \core\model {
                                        FROM dede_archives
                                        WHERE flag LIKE '%w%'AND typeid in (SELECT id
                                        FROM dede_arctype
-                                       WHERE reid in (1, 2, 240, 242) or id = 244) ORDER BY id DESC".$limitStatement);
+                                       WHERE reid in (1, 2, 240, 242) or id = 244) AND arcrank = 0 ORDER BY id DESC".$limitStatement);
     }
 }

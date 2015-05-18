@@ -234,11 +234,11 @@
                 foreach($data['tags'] as $key => $value) {
 
                     $bc = $key % 8;  // 背景颜色的种类, 总共有8个
-                    $hiddenFlag = $key>=8 ? 'tag-hidden' : ' ';  // 一开始并不显示后8个标签
+                    $hiddenFlag = $key>=4 ? 'tag-hidden' : ' ';  // 一开始并不显示后8个标签
                     $tagLength = strlen($value) / 3; // 判断标签的长度，使用不同的css样式，一个中文字符占3个字符长度
                     $href = DIR. "search?keywords=$value";
 
-                    echo "<li class='col-xs-3'><a href='$href' class='a-$tagLength bc-$bc $hiddenFlag'><p>". $value ."</p></a></li>";
+                    echo "<li class='col-xs-3 $hiddenFlag'><a href='$href' class='a-$tagLength bc-$bc'><p>". $value ."</p></a></li>";
 
                 }
             ?>
@@ -289,7 +289,7 @@
 <div class="row header">
     <div class="col-xs-4 header-title">
         <h4>
-            精品咨询
+            精品资讯
         </h4>
     </div>
     <div class="col-xs-3 col-xs-offset-5">
@@ -299,7 +299,7 @@
     </div>
 </div>
 
-<!--显示精品咨询的文章列表-->
+<!--显示精品资讯的文章列表-->
 <?php
     foreach ($data['wapList'] as $article) {
         $description = $article->description;
@@ -361,7 +361,7 @@
         });
 
         $("#tag-more").click(function() {
-            $("a.tag-hidden").toggleClass("tag-show");
+            $("li.tag-hidden").toggleClass("tag-show");
             $("#tag-more").toggleClass("tag-hidden");
             $("#tag-collapse").toggleClass("tag-hidden");
 
@@ -369,7 +369,7 @@
         });
 
         $("#tag-collapse").click(function() {
-            $("a.tag-show").toggleClass("tag-show");
+            $("li.tag-show").toggleClass("tag-show");
             $("#tag-more").toggleClass("tag-hidden");
             $("#tag-collapse").toggleClass("tag-hidden");
         });
